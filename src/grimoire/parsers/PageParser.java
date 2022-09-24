@@ -24,10 +24,6 @@ public class PageParser{
         String[] sections = data.split("\\r?\\n\\r?\\n");
         Element[] results = new Element[sections.length];
 
-        for(String key : parsers.keys().toSeq()){
-            Log.info(key);
-        }
-
         for(int i = 0; i < sections.length; i++){
             String section = sections[i].trim();
 

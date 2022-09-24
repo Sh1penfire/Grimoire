@@ -15,6 +15,9 @@ public class Page{
     protected Element[] elements;
     @Nullable
     public Page nextPage, previousPage;
+    @Nullable
+    public Book parent;
+    public int index = -1;
 
     private static final BaseDialog dialog = new BaseDialog("");
     private static Table cont;
@@ -31,8 +34,8 @@ public class Page{
             }).grow().padBottom(15f);
             t.row();
             t.table(b -> {
-                b.button(Icon.left, () -> currentPage.previousPage.show()).disabled(b1 -> currentPage.previousPage == null).size(30f);
-                b.button(Icon.right, () -> currentPage.nextPage.show()).disabled(b1 -> currentPage.nextPage == null).size(30f);
+                b.button(Icon.left, () -> currentPage.previousPage.show()).disabled(b1 -> currentPage.previousPage == null).size(50f);
+                b.button(Icon.right, () -> currentPage.nextPage.show()).disabled(b1 -> currentPage.nextPage == null).size(50f);
             });
         }).growY().maxWidth(Core.graphics.getWidth() / (Vars.mobile ? 1f : 2f)).growX();
     }
