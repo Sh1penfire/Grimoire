@@ -3,6 +3,7 @@ package grimoire;
 import arc.*;
 import arc.scene.*;
 import grimoire.pages.*;
+import grimoire.parsers.*;
 import mindustry.*;
 import mindustry.game.EventType.*;
 import mindustry.mod.*;
@@ -10,28 +11,22 @@ import mindustry.ui.*;
 import mindustry.ui.dialogs.*;
 
 public class Grimoire extends Mod{
-    public static Element[] testElements;
-
     public Grimoire(){
         Parsers.load();
 
-        // TODO: make a class to wrap around the page creation process.
+        // TODO: make a class to contain multiple pages, like a book.
         Events.on(ClientLoadEvent.class, e-> {
-            testElements = PageParser.parse(Vars.tree.get("pages/test.txt"));
+            Page page1, page2, page3;
 
-            BaseDialog testDialog = new BaseDialog("test");
-            testDialog.cont.pane(t -> {
-                t.top().left();
-                t.defaults().padBottom(15f);
-                t.margin(15f);
-                t.setBackground(Styles.grayPanel);
-                for(Element element : testElements){
-                    t.add(element).growX().left();
-                    t.row();
-                }
-            }).growY().width(Core.graphics.getWidth() / 2f);
+            page1 = new Page(Vars.tree.get("pages/test1.txt"));
+            page2 = new Page(Vars.tree.get("pages/test2.txt"));
+            page3 = new Page(Vars.tree.get("pages/test3.txt"));
 
-            testDialog.show();
+            page1.setNeighbors(null, page2);
+            page2.setNeighbors(page1, page3);
+            page3.setNeighbors(page2, null);
+
+            page2.show();
         });
     }
 }

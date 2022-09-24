@@ -1,4 +1,4 @@
-package grimoire.pages;
+package grimoire.parsers;
 
 import arc.*;
 import arc.graphics.*;
@@ -28,7 +28,7 @@ public class Parsers{
                         h.image(texture).size(
                             icon.getFloat("width", texture.width * 8f),
                             icon.getFloat("height", texture.height * 8f)
-                        ).padRight(15f).left();
+                        ).padRight(15f).top().left();
                     }
                     h.labelWrap(data.getString("text"))
                         .left().growX()

@@ -1,0 +1,15 @@
+${
+    "type":"grimoire-header",
+    "text":"Grimoire",
+    "scale": 1.5,
+    "icon":{
+        "texture":"book",
+        "width": 30,
+        "height": 30
+    }
+}
+
+This is Grimoire's test page!
+
+You'll be able to make all sorts of documentation pages using Grimoire.
+(When it's finished, of course.)

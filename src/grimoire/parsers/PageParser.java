@@ -1,4 +1,4 @@
-package grimoire.pages;
+package grimoire.parsers;
 
 import arc.files.*;
 import arc.scene.*;
@@ -15,17 +15,21 @@ public class PageParser{
     protected static ObjectMap<String, SectionParser> parsers = new ObjectMap<>();
 
     public static Element[] parse(Fi file){
+        return parse(file.readString());
+    }
+
+    public static Element[] parse(String data){
         // Evil regex because using "\\n\\n" does not work.
         // Reused the regex from Esoterum's manual parser, i don't know what this does anymore.
-        String[] data = file.readString().split("\\r?\\n\\r?\\n");
-        Element[] results = new Element[data.length];
+        String[] sections = data.split("\\r?\\n\\r?\\n");
+        Element[] results = new Element[sections.length];
 
         for(String key : parsers.keys().toSeq()){
             Log.info(key);
         }
 
-        for(int i = 0; i < data.length; i++){
-            String section = data[i].trim();
+        for(int i = 0; i < sections.length; i++){
+            String section = sections[i].trim();
 
             if(section.startsWith("${") && section.endsWith("}")){
 
