@@ -36,11 +36,12 @@ public class Book {
                 }
 
                 // TODO: Research parsing
-            }catch(Exception ignored){}
+            }catch(Exception ignored){
 
-            Fi[] list = directory.list(f -> !f.isDirectory() && !f.getName().equals("book.json"));
-            Arrays.sort(list, (a, b) -> a.name().compareTo(b.name())); // make sure the list is sorted alphabetically.
-            for(Fi page : list){
+                Log.err(ignored);
+            }
+
+            for(Fi page : directory.seq().filter(f -> !f.isDirectory() && !f.name().equals("book.json"))){
                 Page p = new Page(page);
 
                 if(pages.size - 1 >= 0){

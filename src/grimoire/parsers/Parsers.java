@@ -7,7 +7,7 @@ import arc.scene.ui.*;
 import arc.scene.ui.layout.*;
 import arc.util.*;
 import arc.util.serialization.*;
-import mindustry.gen.*;
+import mindustry.gen.Tex;
 import mindustry.graphics.*;
 
 public class Parsers{
